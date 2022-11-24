@@ -544,14 +544,31 @@ const axesHelper = new _three.AxesHelper(5);
 scene.add(axesHelper);
 // camera.position.z = 5;
 // camera.position.y = 2;
-camera.position.set(0, 2, 5);
-orbit.update();
+camera.position.set(-10, 30, 5);
+// GEOMETRY
 const boxGeometry = new _three.BoxGeometry();
 const boxMaterial = new _three.MeshBasicMaterial({
     color: 0x00ff00
 });
 const box = new _three.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
+const planeGeometry = new _three.PlaneGeometry(30, 30);
+const planeMaterial = new _three.MeshBasicMaterial({
+    color: 0xffffff,
+    side: _three.DoubleSide
+});
+const plane = new _three.Mesh(planeGeometry, planeMaterial);
+scene.add(plane);
+plane.rotation.x = -0.5 * Math.PI;
+const gridHelper = new _three.GridHelper(30);
+scene.add(gridHelper);
+const sphereGeometry = new _three.SphereGeometry(4, 10, 10);
+const sphereMaterial = new _three.MeshBasicMaterial({
+    color: 0x0000ff,
+    wireframe: true
+});
+const sphere = new _three.Mesh(sphereGeometry, sphereMaterial);
+scene.add(sphere);
 function animate(time) {
     box.rotation.x = time / 1000;
     box.rotation.y = time / 1000;
